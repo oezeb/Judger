@@ -1,11 +1,20 @@
-# Judger 
+# Judger
 
-[![Build Status](https://travis-ci.org/QingdaoU/Judger.svg?branch=newnew)](https://travis-ci.org/QingdaoU/Judger)
+A simple judger for online judge system. Runs **ONLY** on **Linux**.
 
-Judger for OnlineJudge 
+## Requirements
 
-[Document](https://opensource.qduoj.com#/judger/api)
+- cmake
+- python
+- seccomp
+- gcc/g++
+- strace
 
-[JudgeServer](https://github.com/QingdaoU/JudgeServer)
+## Usage
 
-[OnlineJudge](https://github.com/QingdaoU/OnlineJudge)
+Use `judger` to install, build, run and clean the project.
+
+```bash
+chmod +x judger
+./judger -h
+```

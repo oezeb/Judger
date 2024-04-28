@@ -1,0 +1,37 @@
+#! /bin/bash
+
+while getopts "ibrch" opt; do
+  case $opt in
+    i)
+        apt-get install -y cmake python3 python3-pip libseccomp-dev gcc g++ strace
+        pip3 install setuptools --upgrade
+        cd bindings/python && pip3 install .
+        exit 0
+        ;;
+    b)
+        mkdir build && cd build
+        cmake .. && make && make install
+        exit 0
+        ;;
+    r)
+        cd demo && python3 demo.py
+        exit 0
+        ;;
+    c)
+        rm -rf bindings/python/build
+        find bindings/python -type d -name "*.egg-info" -exec rm -rf {} \;
+        rm -rf build
+        rm -rf output
+        rm -rf demo/main
+        find demo -type f -name "*.out" -delete
+        find demo -type f -name "*.log" -delete
+        exit 0
+        ;;
+  esac
+done
+
+echo "Usage: $0 [-i] [-b] [-r]"
+echo "  -i  Install dependencies"
+echo "  -b  Build the project"
+echo "  -r  Run the demo"
+echo "  -c  Clean the project"
